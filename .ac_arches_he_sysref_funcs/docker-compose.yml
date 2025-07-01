@@ -1,0 +1,90 @@
+
+services:
+    archeshesysreffuncs:
+      container_name: archeshesysreffuncs
+      image: he/arches_he_sysref_funcs:dev_build
+      build:
+        args:
+          - "PROJ_NAME=arches_he_sysref_funcs"
+          - "DOCKER_PATH=./arches_he_sysref_funcs/.ac_arches_he_sysref_funcs/docker"
+        context: ../..
+        dockerfile: ./arches_he_sysref_funcs/.ac_arches_he_sysref_funcs/Dockerfile
+      command: run_arches
+      volumes:
+        - ../../arches:/web_root/arches
+        - ../../arches_he_sysref_funcs:/web_root/arches_he_sysref_funcs
+        - ./docker:/web_root/docker
+        - ../../arches_he_sysref_funcs-package:/web_root/arches_he_sysref_funcs_package
+        - ../../arches_he_sysref_funcs-data:/web_root/arches_he_sysref_funcs_data
+      env_file:
+        - ./docker/env_file.env
+      ports:
+        - 8002:8000
+        - 5678:5678
+      stdin_open: true
+      tty: true
+    
+    ## - possible 
+    #archeshesysreffuncs-bash:
+    #  profiles:
+    #    - livereload
+    #  container_name: archeshesysreffuncs-bash
+    #  image: he/arches_he_sysref_funcs:dev_build
+    #  command: ["bash"]
+    #  volumes:
+    #    - ../../arches:/web_root/arches
+    #    - ../../arches_he_sysref_funcs:/web_root/arches_he_sysref_funcs
+    #    - ./docker:/web_root/docker
+    #    - ../../arches_he_sysref_funcs-package:/web_root/arches_he_sysref_funcs_package
+    #    - ../../arches_he_sysref_funcs-data:/web_root/arches_he_sysref_funcs_data
+    #  env_file:
+    #    - ./docker/env_file.env
+    #  ports:
+    #    - 35729:35729      
+    #  depends_on:
+    #      - archeshesysreffuncs
+    #  stdin_open: true
+    #  tty: true
+
+    archeshesysreffuncs-livereload:
+      profiles:
+        - livereload
+      container_name: archeshesysreffuncs-livereload
+      image: he/arches_he_sysref_funcs:dev_build
+      command: run_livereload
+      volumes:
+        - ../../arches:/web_root/arches
+        - ../../arches_he_sysref_funcs:/web_root/arches_he_sysref_funcs
+      env_file:
+        - ./docker/env_file.env
+      ports:
+        - 35729:35729      
+      depends_on:
+          - archeshesysreffuncs
+      stdin_open: true
+      tty: true
+    
+    archeshesysreffuncs-webpack:
+      container_name: archeshesysreffuncs-webpack
+      image: he/arches_he_sysref_funcs:dev_build
+      command: run_webpack
+      volumes:
+        - ../../arches:/web_root/arches
+        - ../../arches_he_sysref_funcs:/web_root/arches_he_sysref_funcs
+      env_file:
+        - ./docker/env_file.env
+      ports:
+        - 8028:8021
+      depends_on:
+          - archeshesysreffuncs
+      stdin_open: true
+      tty: true
+
+networks:
+  default:
+    external: true
+    name: archeshesysreffuncs-network
+
+volumes:
+    arches-log:
+    arches-static:
