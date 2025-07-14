@@ -22,7 +22,13 @@ For development purposes, you can treat this app as a standard Arches project. E
   This installs the app in editable mode, allowing you to make changes and see them reflected immediately without needing to reinstall.
 
 - **For development using included arches-container configuration:**
+  
+  Please ensure that you clone the arches-he-sysref-funcs repository into a directory that uses underscores instead of hyphens, as the arches-containers configuration expects this format. For example, clone it to `arches_he_sysref_funcs`.
 
+  ```bash
+  git clone https://github.com/HistoricEngland/arches-he-sysref-funcs.git arches_he_sysref_funcs
+  ```
+  
   This repository includes an `arches-containers` project configuration, so you can import, activate, and start the system as follows:
 
   1. Ensure Docker is installed and running.
