@@ -16,7 +16,7 @@ For development purposes, you can treat this app as a standard Arches project. E
 - **For development (standard):**
 
   ```bash
-  pip install -e /path/to/this/app --config-settings=--dev
+  pip install -e '/path/to/arches_he_sysref_funcs[dev]'
   ```
 
   This installs the app in editable mode, allowing you to make changes and see them reflected immediately without needing to reinstall.
@@ -28,7 +28,7 @@ For development purposes, you can treat this app as a standard Arches project. E
   ```bash
   git clone https://github.com/HistoricEngland/arches-he-sysref-funcs.git arches_he_sysref_funcs
   ```
-  
+
   This repository includes an `arches-containers` project configuration, so you can import, activate, and start the system as follows:
 
   1. Ensure Docker is installed and running.
@@ -60,7 +60,7 @@ For development purposes, you can treat this app as a standard Arches project. E
 
 Follow these steps to add `arches-he-sysref-funcs` to your Arches project:
 
-### 1. Add to `pyproject.toml`
+### 1. Add to `your_project/pyproject.toml`
 
   Add the following to your `pyproject.toml` dependencies (in the `[project]` section):
 
@@ -77,7 +77,7 @@ Follow these steps to add `arches-he-sysref-funcs` to your Arches project:
   ]
   ```
 
-### 2. Update `your_project/settings.py`
+### 2. Update `your_project/your_project/settings.py`
 
 Add the following to the appropriate locations:
 
@@ -98,7 +98,7 @@ INSTALLED_APPS = (
 ARCHES_APPLICATIONS = ("arches_he_sysref_funcs",)
 ```
 
-### 3. Update `your_project/urls.py`
+### 3. Update `your_project/your_project/urls.py`
 
 Include the app's URLs (add project URLs before this):
 
