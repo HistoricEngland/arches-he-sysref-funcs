@@ -5,6 +5,12 @@ from arches_he_sysref_funcs.search_indexes.sample_index import SampleIndex
 from django.test import TestCase
 
 
+# these tests can be run from the command line via
+# python manage.py test tests.search_indexes.sample_index_tests --settings="tests.test_settings"
+# or if using docker
+# python manage.py test tests.search_indexes.sample_index_tests --settings="tests.test_settings_for_docker"
+
+
 class TestSampleIndex(TestCase):
     def test_prepare_index(self):
         sample_index = SampleIndex(index_name="Sample Index")
