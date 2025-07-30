@@ -6,7 +6,7 @@ Copy the file and remove the .template extension to use it.
 
 import os
 
-# import from the test_settings.py files in the swame folder first
+# import from the test_settings.py files in the same folder first
 
 
 from arches_he_sysref_funcs.settings import *
