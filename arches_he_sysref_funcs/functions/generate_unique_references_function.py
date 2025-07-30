@@ -67,8 +67,10 @@ class GenerateUniqueReferences(BaseFunction):
 
             def get_next_simple_id():
                 if not simpleid_nextval_sequence_exists_singleton():
-                    initial_sequence_number = getattr(settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1)
-                    create_simpleid_nextval_sequence(start=initial_sequence_number)
+                    initial_sequence_number = getattr(
+                        settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1)
+                    create_simpleid_nextval_sequence(
+                        start=initial_sequence_number)
                 with connection.cursor() as cursor:
                     cursor.execute(
                         "SELECT nextval('simpleid_nextval_id_seq');"
@@ -89,7 +91,7 @@ class GenerateUniqueReferences(BaseFunction):
                 language_code = settings.LANGUAGE_CODE
                 default_language_direction = models.Language.objects.get(
                     code=language_code).default_direction
-                
+
                 def populate_simple_id(currentTile, simple_node_id):
                     nextsimpleval = get_next_simple_id()
                     currentTile.data[simple_node_id] = nextsimpleval
@@ -98,7 +100,7 @@ class GenerateUniqueReferences(BaseFunction):
                     # Process simpleid
                     current_simpleid_value = currentTile.data.get(
                         simpleid_node, 0)
-                    if current_simpleid_value == 0 or not str(current_simpleid_value).isdigit():
+                    if not current_simpleid_value or not str(current_simpleid_value).isdigit():
                         populate_simple_id(currentTile, simpleid_node)
                         changes_made = True
 
@@ -137,16 +139,16 @@ class GenerateUniqueReferences(BaseFunction):
             # User is creating a new System Reference tile explicitly
             if str(tile.nodegroup_id) == refNodegroup:
                 check_and_populate_uids(
-                    tile, 
-                    simpleNode, 
-                    resourceIdNode, 
+                    tile,
+                    simpleNode,
+                    resourceIdNode,
                     resourceIdValue
                 )
                 return
 
             # User saves another tile, and create system references if they do not exist
             previously_saved_tiles = Tile.objects.filter(
-                nodegroup_id=refNodegroup, 
+                nodegroup_id=refNodegroup,
                 resourceinstance_id=resourceIdValue
             )
 
@@ -156,9 +158,9 @@ class GenerateUniqueReferences(BaseFunction):
                     try:
                         if (
                             check_and_populate_uids(
-                                p, 
-                                simpleNode, 
-                                resourceIdNode, 
+                                p,
+                                simpleNode,
+                                resourceIdNode,
                                 resourceIdValue
                             ) == True
                         ):
@@ -167,15 +169,15 @@ class GenerateUniqueReferences(BaseFunction):
                         self.logger.error(str(ex))
             else:
                 newRefTile = Tile().get_blank_tile_from_nodegroup_id(
-                    refNodegroup, 
-                    resourceid=resourceIdValue, 
+                    refNodegroup,
+                    resourceid=resourceIdValue,
                     parenttile=None
                 )
                 if (
                     check_and_populate_uids(
-                        newRefTile, 
-                        simpleNode, 
-                        resourceIdNode, 
+                        newRefTile,
+                        simpleNode,
+                        resourceIdNode,
                         resourceIdValue
                     ) == True
                 ):
