@@ -39,6 +39,7 @@ To use this function, your resource graph **must** include:
 3. **Database Sequence**
    - The function will automatically create a PostgreSQL sequence (`simpleid_nextval_id_seq`) if it does not exist.
    - The initial value for the sequence can be set via the Django setting `PRIMARY_REFERENCE_NUMBER_INITIAL_SEED` (see `test_settings.py`).
+   - **Important:** If you are installing this function into an existing Arches instance, it is your responsibility to determine the correct next number for the sequence. Set `PRIMARY_REFERENCE_NUMBER_INITIAL_SEED` to the next available number that will not conflict with existing Primary Reference Numbers. Failing to do so may result in duplicate or conflicting reference numbers.
 
 4. **Language Support**
    - The function supports multi-language fields for the Resource ID node, using the default language code and direction from Arches settings.
@@ -56,4 +57,5 @@ To use this function, your resource graph **must** include:
 ## Notes
 - The function is robust to missing or invalid values and will always ensure a valid PRN and Resource ID are present after save.
 - The function is designed to be idempotent: running it multiple times will not create duplicate reference numbers.
+- **Note:** When installing this function into a pre-populated Arches system, it will not retroactively generate primary reference numbers for existing resources. Only resources that are created or updated after the function is installed will receive new primary reference numbers automatically.
 - For more details, see the code in `generate_unique_references_function.py` and the test graphs in `test_model.json` and `second_test_model.json`.
