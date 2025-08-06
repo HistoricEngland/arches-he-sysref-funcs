@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                     "nodegroup_nodes": [],
                     "resourceid_node": "",
                     "triggering_nodegroups": [],
-                    "uniqueresource_nodegroup": ""
+                    "uniqueresource_nodegroup": "",
                 },
                 "classname": "GenerateUniqueReferences",
                 "component": "views/components/functions/generate-unique-references-function",

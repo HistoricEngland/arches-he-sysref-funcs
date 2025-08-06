@@ -61,20 +61,18 @@ class GenerateUniqueReferences(BaseFunction):
                     with connection.cursor() as cursor:
                         cursor.execute(
                             """CREATE SEQUENCE IF NOT EXISTS simpleid_nextval_id_seq MINVALUE 1 START %s;""",
-                            [start]
+                            [start],
                         )
                 simpleid_nextval_sequence_exists_singleton.exists = True
 
             def get_next_simple_id():
                 if not simpleid_nextval_sequence_exists_singleton():
                     initial_sequence_number = getattr(
-                        settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1)
-                    create_simpleid_nextval_sequence(
-                        start=initial_sequence_number)
-                with connection.cursor() as cursor:
-                    cursor.execute(
-                        "SELECT nextval('simpleid_nextval_id_seq');"
+                        settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1
                     )
+                    create_simpleid_nextval_sequence(start=initial_sequence_number)
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT nextval('simpleid_nextval_id_seq');")
                     [result] = cursor.fetchone()
                 return int(result)
 
@@ -90,7 +88,8 @@ class GenerateUniqueReferences(BaseFunction):
                 changes_made = False
                 language_code = settings.LANGUAGE_CODE
                 default_language_direction = models.Language.objects.get(
-                    code=language_code).default_direction
+                    code=language_code
+                ).default_direction
 
                 def populate_simple_id(currentTile, simple_node_id):
                     nextsimpleval = get_next_simple_id()
@@ -98,16 +97,18 @@ class GenerateUniqueReferences(BaseFunction):
 
                 try:
                     # Process simpleid
-                    current_simpleid_value = currentTile.data.get(
-                        simpleid_node, 0)
-                    if not current_simpleid_value or not str(current_simpleid_value).isdigit():
+                    current_simpleid_value = currentTile.data.get(simpleid_node, 0)
+                    if (
+                        not current_simpleid_value
+                        or not str(current_simpleid_value).isdigit()
+                    ):
                         populate_simple_id(currentTile, simpleid_node)
                         changes_made = True
 
                     # Process resourceid
                     resid_node_data = currentTile.data.get(resid_node) or {}
                     en_data = resid_node_data.get(language_code) or {}
-                    resid_node_value = en_data.get('value')
+                    resid_node_value = en_data.get("value")
 
                     update_resid_node_tile = False
                     if resid_node_value:
@@ -139,17 +140,13 @@ class GenerateUniqueReferences(BaseFunction):
             # User is creating a new System Reference tile explicitly
             if str(tile.nodegroup_id) == refNodegroup:
                 check_and_populate_uids(
-                    tile,
-                    simpleNode,
-                    resourceIdNode,
-                    resourceIdValue
+                    tile, simpleNode, resourceIdNode, resourceIdValue
                 )
                 return
 
             # User saves another tile, and create system references if they do not exist
             previously_saved_tiles = Tile.objects.filter(
-                nodegroup_id=refNodegroup,
-                resourceinstance_id=resourceIdValue
+                nodegroup_id=refNodegroup, resourceinstance_id=resourceIdValue
             )
 
             # There should only be one tile in this nodegroup per resource instance
@@ -158,28 +155,22 @@ class GenerateUniqueReferences(BaseFunction):
                     try:
                         if (
                             check_and_populate_uids(
-                                p,
-                                simpleNode,
-                                resourceIdNode,
-                                resourceIdValue
-                            ) == True
+                                p, simpleNode, resourceIdNode, resourceIdValue
+                            )
+                            == True
                         ):
                             p.save()
                     except Exception as ex:
                         self.logger.error(str(ex))
             else:
                 newRefTile = Tile().get_blank_tile_from_nodegroup_id(
-                    refNodegroup,
-                    resourceid=resourceIdValue,
-                    parenttile=None
+                    refNodegroup, resourceid=resourceIdValue, parenttile=None
                 )
                 if (
                     check_and_populate_uids(
-                        newRefTile,
-                        simpleNode,
-                        resourceIdNode,
-                        resourceIdValue
-                    ) == True
+                        newRefTile, simpleNode, resourceIdNode, resourceIdValue
+                    )
+                    == True
                 ):
                     newRefTile.save()
 
