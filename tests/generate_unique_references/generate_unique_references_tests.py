@@ -33,11 +33,8 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
 
     prn = 0
 
-    print("Initial Seed:", initial_seed)
-
     def setUp(self):
-
-        print("Running setUp...")
+        super().setUp()
 
         # Need to register function before the graphs are imported
         source = os.path.join(
@@ -67,8 +64,6 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
         resource_graph_importer(archesfile["graph"])
         graph = Graph.objects.get(graphid=self.second_test_model_graph_id)
         graph.publish(user=admin)
-
-        print(f"Running test: {self._testMethodName}")
 
     def create_and_assert_resource(
         self, graph_id, tile_data, nodegroup_id, assert_prn=False
@@ -311,5 +306,4 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
         for i in range(50):
             random.shuffle(test_methods)
             for j, test in enumerate(test_methods, start=1):
-                print(f"Random test {i + 1}.{j:02}: {test.__name__}")
                 test()
