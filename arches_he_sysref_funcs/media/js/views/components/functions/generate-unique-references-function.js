@@ -17,7 +17,15 @@ define([
             this.simpleuid_node = params.config.simpleuid_node;
             this.resourceid_node = params.config.resourceid_node;
             this.nodesList = [];
+
             this.nodesReference = params.config.nodegroup_nodes;
+            // Computed observables for filtered node options
+            this.nodesReferenceNumber = ko.pureComputed(() => {
+                return this.nodesReference().filter(node => node.datatype === 'number');
+            });
+            this.nodesReferenceString = ko.pureComputed(() => {
+                return this.nodesReference().filter(node => node.datatype === 'string');
+            });
 
             this.uniqueresource_nodegroup.subscribe((urng) => {
                 this.nodesReference.removeAll();
@@ -34,7 +42,7 @@ define([
                     });
                 }
 
-                this.nodesReference.sort();
+                // No need to sort here, as filtered lists are computed
             });
 
             this.graph.nodes.forEach((node) => {
