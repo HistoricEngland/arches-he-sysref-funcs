@@ -57,24 +57,40 @@ class GenerateUniqueReferences(BaseFunction):
         try:
 
             def create_simpleid_nextval_sequence(start=1):
-                with transaction.atomic():
+                # Create the sequence outside of any open transaction to avoid transaction aborts
+                # This is a separate autocommit block
+                try:
                     with connection.cursor() as cursor:
                         cursor.execute(
                             """CREATE SEQUENCE IF NOT EXISTS simpleid_nextval_id_seq MINVALUE 1 START %s;""",
                             [start],
                         )
-                simpleid_nextval_sequence_exists_singleton.exists = True
+                    simpleid_nextval_sequence_exists_singleton.exists = True
+                except Exception as ex:
+                    self.logger.error(f"Failed to create sequence: {ex}")
+                    raise
 
             def get_next_simple_id():
+                # Ensure the sequence exists before using it
                 if not simpleid_nextval_sequence_exists_singleton():
                     initial_sequence_number = getattr(
                         settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1
                     )
+                    # Try to create the sequence in a separate transaction
                     create_simpleid_nextval_sequence(start=initial_sequence_number)
-                with connection.cursor() as cursor:
-                    cursor.execute("SELECT nextval('simpleid_nextval_id_seq');")
-                    [result] = cursor.fetchone()
-                return int(result)
+                    # Double-check existence
+                    if not simpleid_nextval_sequence_exists_singleton():
+                        raise Exception(
+                            "simpleid_nextval_id_seq sequence does not exist and could not be created."
+                        )
+                try:
+                    with connection.cursor() as cursor:
+                        cursor.execute("SELECT nextval('simpleid_nextval_id_seq');")
+                        [result] = cursor.fetchone()
+                    return int(result)
+                except Exception as ex:
+                    self.logger.error(f"Failed to get next simple id: {ex}")
+                    raise
 
             resourceIdValue = tile.resourceinstance_id
             simpleNode = self.config["simpleuid_node"]
@@ -84,7 +100,6 @@ class GenerateUniqueReferences(BaseFunction):
             def check_and_populate_uids(
                 currentTile, simpleid_node, resid_node, resourceidval
             ):
-
                 changes_made = False
                 language_code = settings.LANGUAGE_CODE
                 default_language_direction = models.Language.objects.get(
@@ -92,8 +107,12 @@ class GenerateUniqueReferences(BaseFunction):
                 ).default_direction
 
                 def populate_simple_id(currentTile, simple_node_id):
-                    nextsimpleval = get_next_simple_id()
-                    currentTile.data[simple_node_id] = nextsimpleval
+                    try:
+                        nextsimpleval = get_next_simple_id()
+                        currentTile.data[simple_node_id] = nextsimpleval
+                    except Exception as ex:
+                        self.logger.error(f"Could not populate simple id: {ex}")
+                        raise
 
                 try:
                     # Process simpleid
@@ -121,9 +140,7 @@ class GenerateUniqueReferences(BaseFunction):
                         update_resid_node_tile = True
 
                     if update_resid_node_tile:
-
                         changes_made = True
-
                         currentTile.data[resid_node] = {
                             language_code: {
                                 "value": str(resourceidval),
