@@ -305,5 +305,5 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
         ]
         for i in range(50):
             random.shuffle(test_methods)
-            for j, test in enumerate(test_methods, start=1):
+            for test in test_methods:
                 test()
