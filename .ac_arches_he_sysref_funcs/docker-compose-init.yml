@@ -1,0 +1,21 @@
+
+services:
+    archeshesysreffuncs:
+      container_name: archeshesysreffuncs
+      image: he/arches_he_sysref_funcs:dev_build
+      build:
+        args:
+          - "PROJ_NAME=arches_he_sysref_funcs"
+          - "DOCKER_PATH=./arches_he_sysref_funcs/.ac_arches_he_sysref_funcs/docker"
+        context: ../..
+        dockerfile: ./arches_he_sysref_funcs/.ac_arches_he_sysref_funcs/Dockerfile
+      command: create_project
+      volumes:
+        - ../..:/web_root
+      env_file:
+        - ./docker/env_file.env
+      ports:
+        - 8002:8000
+        - 5678:5678
+      stdin_open: true
+      tty: true
