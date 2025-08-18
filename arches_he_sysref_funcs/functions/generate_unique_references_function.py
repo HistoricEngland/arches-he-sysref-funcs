@@ -5,10 +5,7 @@ from arches.app.models.tile import Tile
 from arches.app.models.system_settings import settings
 from django.db import connection
 
-# from django.contrib.postgres.fields.jsonb import KeyTextTransform
 import logging
-import json
-from datetime import datetime
 
 details = {
     "name": "Generate Unique References",
@@ -37,11 +34,8 @@ class GenerateUniqueReferences(BaseFunction):
         try:
 
             def create_simpleid_nextval_sequence(start=1):
-                # Create the sequence outside of any open transaction to avoid transaction aborts
-                # Use autocommit to ensure the sequence is created immediately
                 try:
                     with connection.cursor() as cursor:
-                        # Set autocommit for this operation
                         cursor.execute(
                             """
                             CREATE SEQUENCE IF NOT EXISTS simpleid_nextval_id_seq MINVALUE 1 START %s;
