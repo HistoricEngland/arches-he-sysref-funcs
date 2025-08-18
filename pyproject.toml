@@ -40,3 +40,22 @@ dev = [
 
 [tool.setuptools]
 packages = ["arches_he_sysref_funcs"]
+
+[tool.black]
+target-version = ['py310']
+line-length = 140
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
