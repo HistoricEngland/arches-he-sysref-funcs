@@ -3,9 +3,7 @@ from arches.app.functions.base import BaseFunction
 from arches.app.models import models
 from arches.app.models.tile import Tile
 from arches.app.models.system_settings import settings
-from django.db.models.functions import Cast
-from django.db.models import Max, IntegerField
-from django.db import connection, transaction
+from django.db import connection
 
 # from django.contrib.postgres.fields.jsonb import KeyTextTransform
 import logging
@@ -29,24 +27,6 @@ details = {
 }
 
 
-# Singleton functions need to be defined outside of the class to ensure they are not redefined on each instantiation
-def simpleid_nextval_sequence_exists_singleton():
-    if not hasattr(simpleid_nextval_sequence_exists_singleton, "exists"):
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """
-                SELECT EXISTS (
-                    SELECT FROM information_schema.sequences
-                    WHERE sequence_schema = 'public'
-                    AND sequence_name = 'simpleid_nextval_id_seq'
-                );
-                """
-            )
-            [result] = cursor.fetchone()
-        simpleid_nextval_sequence_exists_singleton.exists = bool(result)
-    return simpleid_nextval_sequence_exists_singleton.exists
-
-
 class GenerateUniqueReferences(BaseFunction):
 
     def get(self):
@@ -58,39 +38,84 @@ class GenerateUniqueReferences(BaseFunction):
 
             def create_simpleid_nextval_sequence(start=1):
                 # Create the sequence outside of any open transaction to avoid transaction aborts
-                # This is a separate autocommit block
+                # Use autocommit to ensure the sequence is created immediately
                 try:
                     with connection.cursor() as cursor:
+                        # Set autocommit for this operation
                         cursor.execute(
-                            """CREATE SEQUENCE IF NOT EXISTS simpleid_nextval_id_seq MINVALUE 1 START %s;""",
+                            """
+                            CREATE SEQUENCE IF NOT EXISTS simpleid_nextval_id_seq MINVALUE 1 START %s;
+                            """,
                             [start],
                         )
-                    simpleid_nextval_sequence_exists_singleton.exists = True
                 except Exception as ex:
                     self.logger.error(f"Failed to create sequence: {ex}")
                     raise
 
+            def get_current_sequence_number_from_database():
+                funcs = models.FunctionXGraph.objects.filter(function_id=details["functionid"])
+                nodeinfos = [
+                    {
+                        "simpleid": fn.config.get("simpleuid_node"),
+                        "unique_ng_id": fn.config.get("uniqueresource_nodegroup"),
+                    }
+                    for fn in funcs
+                    if "simpleuid_node" in fn.config and "uniqueresource_nodegroup" in fn.config
+                ]
+
+                if not nodeinfos:
+                    return None
+
+                sql_node_str = ", ".join("t.tiledata ->> %s::text" for _ in nodeinfos)
+                sql_nodegroups = tuple(ni["unique_ng_id"] for ni in nodeinfos)
+                sql_params = [str(ni["simpleid"]) for ni in nodeinfos] + [sql_nodegroups]
+
+                sql = f"""
+                    SELECT results.simple_id::int
+                    FROM (
+                        SELECT
+                            COALESCE({sql_node_str}, '0') AS simple_id
+                        FROM tiles t
+                        WHERE nodegroupid IN %s
+                    ) AS results
+                    ORDER BY results.simple_id::int DESC
+                    LIMIT 1
+                """
+
+                with connection.cursor() as cursor:
+                    cursor.execute(sql, sql_params)
+                    result = cursor.fetchone()
+                if result and result[0] is not None:
+                    try:
+                        return int(result[0])
+                    except (ValueError, TypeError):
+                        return None
+                return None
+
             def get_next_simple_id():
-                # Ensure the sequence exists before using it
-                if not simpleid_nextval_sequence_exists_singleton():
-                    initial_sequence_number = getattr(
-                        settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        """
+                        SELECT EXISTS (
+                        SELECT FROM information_schema.sequences
+                        WHERE sequence_schema = 'public'
+                        AND sequence_name = 'simpleid_nextval_id_seq'
+                        );
+                        """
                     )
-                    # Try to create the sequence in a separate transaction
-                    create_simpleid_nextval_sequence(start=initial_sequence_number)
-                    # Double-check existence
-                    if not simpleid_nextval_sequence_exists_singleton():
-                        raise Exception(
-                            "simpleid_nextval_id_seq sequence does not exist and could not be created."
-                        )
-                try:
-                    with connection.cursor() as cursor:
+                    exists = cursor.fetchone()[0]
+                    if exists:
                         cursor.execute("SELECT nextval('simpleid_nextval_id_seq');")
-                        [result] = cursor.fetchone()
-                    return int(result)
-                except Exception as ex:
-                    self.logger.error(f"Failed to get next simple id: {ex}")
-                    raise
+                        return cursor.fetchone()[0]
+                    else:
+                        current_sequence_number = get_current_sequence_number_from_database()
+                        next_database_value = current_sequence_number + 1 if current_sequence_number is not None else 1
+                        initial_sequence_number = max(
+                            getattr(settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1),
+                            next_database_value
+                        )
+                        create_simpleid_nextval_sequence(start=initial_sequence_number)
+                        return get_next_simple_id()
 
             resourceIdValue = tile.resourceinstance_id
             simpleNode = self.config["simpleuid_node"]
