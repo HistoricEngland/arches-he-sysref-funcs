@@ -47,14 +47,17 @@ class GenerateUniqueReferences(BaseFunction):
                     raise
 
             def get_current_sequence_number_from_database():
-                funcs = models.FunctionXGraph.objects.filter(function_id=details["functionid"])
+                funcs = models.FunctionXGraph.objects.filter(
+                    function_id=details["functionid"]
+                )
                 nodeinfos = [
                     {
                         "simpleid": fn.config.get("simpleuid_node"),
                         "unique_ng_id": fn.config.get("uniqueresource_nodegroup"),
                     }
                     for fn in funcs
-                    if "simpleuid_node" in fn.config and "uniqueresource_nodegroup" in fn.config
+                    if "simpleuid_node" in fn.config
+                    and "uniqueresource_nodegroup" in fn.config
                 ]
 
                 if not nodeinfos:
@@ -62,7 +65,9 @@ class GenerateUniqueReferences(BaseFunction):
 
                 sql_node_str = ", ".join("t.tiledata ->> %s::text" for _ in nodeinfos)
                 sql_nodegroups = tuple(ni["unique_ng_id"] for ni in nodeinfos)
-                sql_params = [str(ni["simpleid"]) for ni in nodeinfos] + [sql_nodegroups]
+                sql_params = [str(ni["simpleid"]) for ni in nodeinfos] + [
+                    sql_nodegroups
+                ]
 
                 sql = f"""
                     SELECT results.simple_id::int
@@ -102,11 +107,19 @@ class GenerateUniqueReferences(BaseFunction):
                         cursor.execute("SELECT nextval('simpleid_nextval_id_seq');")
                         return cursor.fetchone()[0]
                     else:
-                        current_sequence_number = get_current_sequence_number_from_database()
-                        next_database_value = current_sequence_number + 1 if current_sequence_number is not None else 1
+                        current_sequence_number = (
+                            get_current_sequence_number_from_database()
+                        )
+                        next_database_value = (
+                            current_sequence_number + 1
+                            if current_sequence_number is not None
+                            else 1
+                        )
                         initial_sequence_number = max(
-                            getattr(settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1),
-                            next_database_value
+                            getattr(
+                                settings, "PRIMARY_REFERENCE_NUMBER_INITIAL_SEED", 1
+                            ),
+                            next_database_value,
                         )
                         create_simpleid_nextval_sequence(start=initial_sequence_number)
                         return get_next_simple_id()
