@@ -71,3 +71,7 @@ SILENCED_SYSTEM_CHECKS.append(
 ELASTICSEARCH_HOSTS = [
     {"scheme": "http", "host": "localhost", "port": ELASTICSEARCH_HTTP_PORT}
 ]
+
+# Initial seed for Primary Reference Number generation (PRN)
+# for use in Generate Unique References Function tests.
+PRIMARY_REFERENCE_NUMBER_INITIAL_SEED = 1000000
