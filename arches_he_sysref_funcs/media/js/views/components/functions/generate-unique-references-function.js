@@ -9,7 +9,6 @@ define([
 ], function ($, ko, koMapping, ListView, FunctionViewModel, chosen, generateUniqueReferencesFunctionTemplate) {
     const viewModel = function(params) {
         try {
-            
             FunctionViewModel.apply(this, arguments);
             this.nodesSemantic = ko.observableArray();
             this.uniqueresource_nodegroup = params.config.uniqueresource_nodegroup;
@@ -18,36 +17,9 @@ define([
             this.resourceid_node = params.config.resourceid_node;
             this.nodesList = [];
 
-            this.nodesReference = params.config.nodegroup_nodes;
-            // Computed observables for filtered node options
-            this.nodesReferenceNumber = ko.pureComputed(() => {
-                return this.nodesReference().filter(node => node.datatype === 'number');
-            });
-            this.nodesReferenceString = ko.pureComputed(() => {
-                return this.nodesReference().filter(node => node.datatype === 'string');
-            });
-
-            this.uniqueresource_nodegroup.subscribe((urng) => {
-                this.nodesReference.removeAll();
-                this.nodegroupid = urng;
-
-                const filter = this.nodegroupid;
-                if (!filter) {
-                    return null;
-                } else {
-                    ko.utils.arrayFilter(this.nodesList, (item) => {
-                        if (item.nodegroup_id === filter) {
-                            this.nodesReference.push(item);
-                        }
-                    });
-                }
-
-                // No need to sort here, as filtered lists are computed
-            });
-
             this.graph.nodes.forEach((node) => {
                 if (node.datatype == "semantic" && node.nodegroup_id == node.nodeid) {
-                        this.nodesSemantic.push(node);
+                    this.nodesSemantic.push(node);
                 } else {
                     this.nodesList.push(node);
                 }
@@ -60,7 +32,28 @@ define([
                     this.triggering_nodegroups.push(nodegroup.nodegroupid);
                 }
             });
+
+            this.nodesReference = ko.pureComputed(() => {
+                const filter = this.uniqueresource_nodegroup();
+                if (!filter) return [];
+                return this.nodesList.filter(item => item.nodegroup_id === filter);
+            });
+
+            this.nodesReferenceNumber = ko.pureComputed(() => {
+                return this.nodesReference().filter(node => node.datatype === 'number');
+            });
+
+            this.nodesReferenceString = ko.pureComputed(() => {
+                return this.nodesReference().filter(node => node.datatype === 'string');
+            });
+
+            this.uniqueresource_nodegroup.subscribe((newValue) => {
+                console.log('nodesSemantic selection changed:', newValue);
+                window.setTimeout(() => { $("select[data-bind^=chosen]").trigger("chosen:updated"); }, 300);
+            });            
+
             window.setTimeout(() => { $("select[data-bind^=chosen]").trigger("chosen:updated"); }, 300);
+
         }
         catch(err){
             console.error(err.message);
