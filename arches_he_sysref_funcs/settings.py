@@ -17,6 +17,9 @@ APP_NAME = "arches_he_sysref_funcs"
 APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
+# Optional initial seed for primary reference numbers
+# PRIMARY_REFERENCE_NUMBER_INITIAL_SEED = 1000
+
 WEBPACK_LOADER = {
     "DEFAULT": {
         "STATS_FILE": os.path.join(APP_ROOT, "..", "webpack/webpack-stats.json"),
