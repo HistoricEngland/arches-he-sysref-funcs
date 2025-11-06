@@ -14,7 +14,7 @@ except ImportError:
     pass
 
 APP_NAME = "arches_he_sysref_funcs"
-APP_VERSION = semantic_version.Version(major=0, minor=0, patch=0)
+APP_VERSION = semantic_version.Version(major=1, minor=0, patch=0)
 APP_ROOT = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
 # Optional initial seed for primary reference numbers
