@@ -1,0 +1,93 @@
+
+services:
+    nginx-archeshesysreffuncs:
+      container_name: nginx-archeshesysreffuncs
+      image: nginx:latest
+      ports:
+        - "8080:80"
+      volumes:
+        - ./docker/nginx-config/default.conf:/etc/nginx/conf.d/default.conf
+      networks:
+        - archeshesysreffuncs-network
+
+    db-archeshesysreffuncs:
+      container_name: db-archeshesysreffuncs
+      image: postgis/postgis:14-3.2
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
+        - postgres-log:/var/log/postgresql
+        - ./docker/init-unix.sql:/docker-entrypoint-initdb.d/init.sql # to set up the DB template
+      ports:
+        - '5433:5432'
+      env_file: 
+        - ./docker/env_file.env
+      networks:
+        - archeshesysreffuncs-network
+
+    elasticsearch-archeshesysreffuncs:
+      container_name: elasticsearch-archeshesysreffuncs
+      image: docker.elastic.co/elasticsearch/elasticsearch:8.10.4
+      volumes:
+        #- ../../elasticsearch_data_arches_he_sysref_funcs:/usr/share/elasticsearch/data
+        - elasticsearch-data:/usr/share/elasticsearch/data
+      ports:
+        - "9201:9200"
+        - "9301:9300"
+      env_file: 
+        - ./docker/env_file.env
+      networks:
+        - archeshesysreffuncs-network
+
+    rabbitmq-archeshesysreffuncs:
+      container_name: rabbitmq-archeshesysreffuncs
+      image: rabbitmq:3.12.6-management
+      hostname: my-rabbit
+      volumes:
+        - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+        - rabbitmq-logs:/var/log/rabbitmq/log
+      ports:
+        - 5673:5672
+        - 15673:15672
+      networks:
+        - archeshesysreffuncs-network
+
+    #pg-feat-archeshesysreffuncs:
+    #  container_name: pg-feat-archeshesysreffuncs
+    #  image: pramsey/pg_featureserv
+    #  volumes:
+    #    - ../../pg_featureserv_config_arches_he_sysref_funcs:/config
+    #  environment:
+    #    - DATABASE_URL=postgresql://arches_spatial_views:arches_spatial_views@db-archeshesysreffuncs:5432/arches_he_sysref_funcs
+    #  ports:
+    #    - 9000:9000
+    #  depends_on:
+    #    - db-archeshesysreffuncs
+    #  networks:
+    #    - archeshesysreffuncs-network
+    
+    #pg-tile-archeshesysreffuncs:
+    #  container_name: pg-tile-archeshesysreffuncs
+    #  image: pramsey/pg_tileserv
+    #  volumes:
+    #    - ../../pg_tileserv_config_arches_he_sysref_funcs:/config
+    #  environment:
+    #    - DATABASE_URL=postgresql://arches_spatial_views:arches_spatial_views@db-archeshesysreffuncs:5432/arches_he_sysref_funcs
+    #  ports:
+    #    - 7800:7800
+    #  depends_on:
+    #    - db-archeshesysreffuncs
+    #  networks:
+    #    - archeshesysreffuncs-network
+
+
+networks:
+  archeshesysreffuncs-network:
+    name: archeshesysreffuncs-network
+    driver: bridge
+
+volumes:
+    postgres-data:
+    postgres-log:
+    elasticsearch-data:
+    rabbitmq-logs:
+    rabbitmq-data:

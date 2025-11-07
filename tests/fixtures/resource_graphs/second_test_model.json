@@ -1,0 +1,1116 @@
+{
+    "graph": [
+        {
+            "author": " ",
+            "cards": [
+                {
+                    "active": true,
+                    "cardid": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": false,
+                    "name": {
+                        "en": "Descriptions"
+                    },
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "sortorder": null,
+                    "visible": true
+                },
+                {
+                    "active": true,
+                    "cardid": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "component_id": "f05e4d3a-53c1-11e8-b0ea-784f435179ea",
+                    "config": null,
+                    "constraints": [],
+                    "cssclass": null,
+                    "description": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "helpenabled": false,
+                    "helptext": {
+                        "en": ""
+                    },
+                    "helptitle": {
+                        "en": ""
+                    },
+                    "instructions": {
+                        "en": ""
+                    },
+                    "is_editable": false,
+                    "name": {
+                        "en": "System Reference Numbers"
+                    },
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "sortorder": null,
+                    "visible": true
+                }
+            ],
+            "cards_x_nodes_x_widgets": [
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": "",
+                        "format": "",
+                        "i18n_properties": [
+                            "placeholder",
+                            "prefix",
+                            "suffix"
+                        ],
+                        "label": "Primary Reference Number",
+                        "max": "",
+                        "min": "",
+                        "placeholder": {
+                            "en": "Enter number"
+                        },
+                        "precision": "",
+                        "prefix": {
+                            "en": ""
+                        },
+                        "step": "0",
+                        "suffix": {
+                            "en": ""
+                        },
+                        "uneditable": true,
+                        "width": "100%%"
+                    },
+                    "id": "03d0f31a-d704-48c8-98bb-6a772f3e895a",
+                    "label": {
+                        "en": "Primary Reference Number"
+                    },
+                    "node_id": "2a060860-624a-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 1,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000008"
+                },
+                {
+                    "card_id": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Description Language Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "0950d52b-cebf-4569-be0e-065e08e821e8",
+                    "label": {
+                        "en": "Description Language Metatype"
+                    },
+                    "node_id": "0b1890b0-63c8-11f0-b057-62c8cdfa6e19",
+                    "sortorder": 4,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Description",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": false,
+                        "width": "100%"
+                    },
+                    "id": "3d498099-e67c-4ba5-a6f4-dd0b0f11ea11",
+                    "label": {
+                        "en": "Description"
+                    },
+                    "node_id": "25ec1592-63c8-11f0-b057-62c8cdfa6e19",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000001"
+                },
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "ResourceID Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "4ba779e6-f0e3-45f3-a3e0-51b09d006ace",
+                    "label": {
+                        "en": "ResourceID Type"
+                    },
+                    "node_id": "d19f9384-624a-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 5,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Description Language",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "62bf97ae-7d76-4d55-b1e5-72a522392ee0",
+                    "label": {
+                        "en": "Description Language"
+                    },
+                    "node_id": "f142b738-63c7-11f0-b057-62c8cdfa6e19",
+                    "sortorder": 3,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": {
+                            "en": {
+                                "direction": "ltr",
+                                "value": ""
+                            }
+                        },
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "ResourceID",
+                        "maxLength": null,
+                        "placeholder": {
+                            "en": "Enter text"
+                        },
+                        "uneditable": true,
+                        "width": "100%%"
+                    },
+                    "id": "648d3516-ce6a-4430-b548-6bbec6a0142c",
+                    "label": {
+                        "en": "ResourceID"
+                    },
+                    "node_id": "b4d8a7a4-624a-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 0,
+                    "visible": true,
+                    "widget_id": "10000000-0000-0000-0000-000000000001"
+                },
+                {
+                    "card_id": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Description Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "8ff7e388-86cf-4645-862d-e73d6157d880",
+                    "label": {
+                        "en": "Description Type"
+                    },
+                    "node_id": "bfa8eb7a-63c7-11f0-b057-62c8cdfa6e19",
+                    "sortorder": 1,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Primary Reference Number Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "9b3e8282-c249-411c-b61a-51c20f61bb19",
+                    "label": {
+                        "en": "Primary Reference Number Metatype"
+                    },
+                    "node_id": "61f674ee-624a-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 3,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "c90c3704-bbe4-4302-8b7d-0d918217834e",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Description Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "ca3b50c9-e3e4-4ac8-b675-96658943ff55",
+                    "label": {
+                        "en": "Description Metatype"
+                    },
+                    "node_id": "db7ade80-63c7-11f0-b057-62c8cdfa6e19",
+                    "sortorder": 2,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "ResourceID Metatype",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "ca667b9d-653b-4839-9f9a-f7ed5b88e37f",
+                    "label": {
+                        "en": "ResourceID Metatype"
+                    },
+                    "node_id": "eba9e4aa-624a-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 2,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                },
+                {
+                    "card_id": "e369ff66-1c7e-4ff6-99e4-940672c556bb",
+                    "config": {
+                        "defaultValue": "",
+                        "i18n_properties": [
+                            "placeholder"
+                        ],
+                        "label": "Primary Reference Number Type",
+                        "options": [],
+                        "placeholder": {
+                            "en": "Select an option"
+                        }
+                    },
+                    "id": "fd57561b-9a8a-433a-ad49-6962053556be",
+                    "label": {
+                        "en": "Primary Reference Number Type"
+                    },
+                    "node_id": "fd70c92a-6249-11f0-8f24-96a8a23bc0be",
+                    "sortorder": 4,
+                    "visible": false,
+                    "widget_id": "10000000-0000-0000-0000-000000000002"
+                }
+            ],
+            "color": null,
+            "config": {},
+            "deploymentdate": null,
+            "deploymentfile": null,
+            "description": {
+                "en": ""
+            },
+            "edges": [
+                {
+                    "description": null,
+                    "domainnode_id": "d19f9384-624a-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "252e8a76-5aab-471a-91ec-9707a4d79a3c",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "eba9e4aa-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "f142b738-63c7-11f0-b057-62c8cdfa6e19",
+                    "edgeid": "3ea2572a-f6ec-4d86-a2f3-60dfd1d7a7c3",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "0b1890b0-63c8-11f0-b057-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "e46869d8-6249-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "460b5782-5ef2-43fb-b3ec-5f0b88be14a4",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "fd70c92a-6249-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "1d7eba02-6249-11f0-b14f-96a8a23bc0be",
+                    "edgeid": "5ca7e9ea-3715-4ae3-ab7c-b059ccf37e53",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "97871640-624a-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "5f0fb10f-e217-4932-9d68-555cd5f9c6e4",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "d19f9384-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "edgeid": "6b669d9a-de5f-4cc6-9146-6878477bcf19",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "bfa8eb7a-63c7-11f0-b057-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "e46869d8-6249-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "8298b330-e1ee-47d7-8ad9-cfa4aa51a22e",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "2a060860-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "1d7eba02-6249-11f0-b14f-96a8a23bc0be",
+                    "edgeid": "942015e8-9b02-4064-ae07-76dda1735f95",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "fd70c92a-6249-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "95677bab-ae20-41da-aa7f-85b89a5a6744",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "61f674ee-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "9648ba1c-3e53-4913-bb83-9ad87a60a5cf",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "97871640-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "97871640-624a-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "9fd69d55-b038-4987-8ec4-5d618ee23a01",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "b4d8a7a4-624a-11f0-8f24-96a8a23bc0be"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "bfa8eb7a-63c7-11f0-b057-62c8cdfa6e19",
+                    "edgeid": "a53056cf-1b47-4cdf-a2e4-ad8b487bd942",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "db7ade80-63c7-11f0-b057-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "edgeid": "aa672411-317a-4a3d-8744-6a8a52e78b96",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "f142b738-63c7-11f0-b057-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "edgeid": "b49db527-6fb1-4a35-b9a8-039c17050f36",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "25ec1592-63c8-11f0-b057-62c8cdfa6e19"
+                },
+                {
+                    "description": null,
+                    "domainnode_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "edgeid": "bbfbf3c4-d6a6-49df-90e2-f7d550fda9ac",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "name": null,
+                    "ontologyproperty": null,
+                    "rangenode_id": "e46869d8-6249-11f0-8f24-96a8a23bc0be"
+                }
+            ],
+            "functions_x_graphs": [
+                {
+                    "config": {
+                        "nodegroup_nodes": [
+                            {
+                                "alias": "resourceid_metatype",
+                                "config": {
+                                    "rdmCollection": null
+                                },
+                                "datatype": "concept",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": false,
+                                "istopnode": false,
+                                "name": "ResourceID Metatype",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "eba9e4aa-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 0,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "resourceid",
+                                "config": {
+                                    "en": ""
+                                },
+                                "datatype": "string",
+                                "description": null,
+                                "exportable": true,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": true,
+                                "istopnode": false,
+                                "name": "ResourceID",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "b4d8a7a4-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 0,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "primaryreferencenumber",
+                                "config": {
+                                    "en": ""
+                                },
+                                "datatype": "semantic",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": true,
+                                "istopnode": false,
+                                "name": "PrimaryReferenceNumber",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "e46869d8-6249-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 0,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "primary_reference_number_metatype",
+                                "config": {
+                                    "rdmCollection": null
+                                },
+                                "datatype": "concept",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": false,
+                                "istopnode": false,
+                                "name": "Primary Reference Number Metatype",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "61f674ee-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 0,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "primary_reference_number_type",
+                                "config": {
+                                    "rdmCollection": null
+                                },
+                                "datatype": "concept",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": false,
+                                "istopnode": false,
+                                "name": "Primary Reference Number Type",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "fd70c92a-6249-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 0,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "primary_reference_number",
+                                "config": {
+                                    "en": ""
+                                },
+                                "datatype": "number",
+                                "description": null,
+                                "exportable": true,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": true,
+                                "istopnode": false,
+                                "name": "Primary Reference Number",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "2a060860-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 1,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "resourceid_type",
+                                "config": {
+                                    "rdmCollection": null
+                                },
+                                "datatype": "concept",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": false,
+                                "istopnode": false,
+                                "name": "ResourceID Type",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "d19f9384-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 1,
+                                "sourcebranchpublication_id": null
+                            },
+                            {
+                                "alias": "uuid",
+                                "config": {
+                                    "en": ""
+                                },
+                                "datatype": "semantic",
+                                "description": null,
+                                "exportable": false,
+                                "fieldname": null,
+                                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                                "hascustomalias": true,
+                                "is_collector": false,
+                                "isrequired": false,
+                                "issearchable": true,
+                                "istopnode": false,
+                                "name": "UUID",
+                                "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                                "nodeid": "97871640-624a-11f0-8f24-96a8a23bc0be",
+                                "ontologyclass": null,
+                                "parentproperty": null,
+                                "sortorder": 1,
+                                "sourcebranchpublication_id": null
+                            }
+                        ],
+                        "resourceid_node": "b4d8a7a4-624a-11f0-8f24-96a8a23bc0be",
+                        "simpleuid_node": "2a060860-624a-11f0-8f24-96a8a23bc0be",
+                        "triggering_nodegroups": [
+                            "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                            "6799975e-63c7-11f0-9d19-62c8cdfa6e19"
+                        ],
+                        "uniqueresource_nodegroup": "cb07f788-6249-11f0-8f24-96a8a23bc0be"
+                    },
+                    "function_id": "39d627ae-6973-4ddb-8b62-1f0230e1e3f9",
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "id": "0fbdc376-1f8e-461d-85eb-ad5931372e41"
+                }
+            ],
+            "graphid": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+            "iconclass": "",
+            "is_editable": false,
+            "isresource": true,
+            "jsonldcontext": null,
+            "name": {
+                "en": "Second Test Model"
+            },
+            "nodegroups": [
+                {
+                    "cardinality": "n",
+                    "legacygroupid": null,
+                    "nodegroupid": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "parentnodegroup_id": null
+                },
+                {
+                    "cardinality": "1",
+                    "legacygroupid": null,
+                    "nodegroupid": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "parentnodegroup_id": null
+                }
+            ],
+            "nodes": [
+                {
+                    "alias": "description_language_metatype",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Description Language Metatype",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "0b1890b0-63c8-11f0-b057-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": null,
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": "",
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": false,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": true,
+                    "name": "Second Test Model",
+                    "nodegroup_id": null,
+                    "nodeid": "1d7eba02-6249-11f0-b14f-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": "",
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "description",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": true,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": true,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Description",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "25ec1592-63c8-11f0-b057-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "primary_reference_number",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "number",
+                    "description": null,
+                    "exportable": true,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Primary Reference Number",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "2a060860-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 1,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "primary_reference_number_metatype",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Primary Reference Number Metatype",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "61f674ee-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "descriptions",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Descriptions",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "uuid",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "UUID",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "97871640-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 1,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "resourceid",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "string",
+                    "description": null,
+                    "exportable": true,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "ResourceID",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "b4d8a7a4-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "description_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Description Type",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "bfa8eb7a-63c7-11f0-b057-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 1,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "system_reference_numbers",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": true,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "System Reference Numbers",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "resourceid_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "ResourceID Type",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "d19f9384-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 1,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "description_metatype",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Description Metatype",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "db7ade80-63c7-11f0-b057-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "primaryreferencenumber",
+                    "config": {
+                        "en": ""
+                    },
+                    "datatype": "semantic",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "PrimaryReferenceNumber",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "e46869d8-6249-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "resourceid_metatype",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "ResourceID Metatype",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "eba9e4aa-624a-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "description_language",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": true,
+                    "istopnode": false,
+                    "name": "Description Language",
+                    "nodegroup_id": "6799975e-63c7-11f0-9d19-62c8cdfa6e19",
+                    "nodeid": "f142b738-63c7-11f0-b057-62c8cdfa6e19",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 2,
+                    "sourcebranchpublication_id": null
+                },
+                {
+                    "alias": "primary_reference_number_type",
+                    "config": {
+                        "rdmCollection": null
+                    },
+                    "datatype": "concept",
+                    "description": null,
+                    "exportable": false,
+                    "fieldname": null,
+                    "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                    "hascustomalias": true,
+                    "is_collector": false,
+                    "isrequired": false,
+                    "issearchable": false,
+                    "istopnode": false,
+                    "name": "Primary Reference Number Type",
+                    "nodegroup_id": "cb07f788-6249-11f0-8f24-96a8a23bc0be",
+                    "nodeid": "fd70c92a-6249-11f0-8f24-96a8a23bc0be",
+                    "ontologyclass": null,
+                    "parentproperty": null,
+                    "sortorder": 0,
+                    "sourcebranchpublication_id": null
+                }
+            ],
+            "ontology_id": null,
+            "publication": {
+                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                "notes": null,
+                "publicationid": "b2c2d0aa-63f0-11f0-ab8a-460d1d596ee6",
+                "published_time": "2025-07-18T11:03:09.089"
+            },
+            "relatable_resource_model_ids": [],
+            "resource_2_resource_constraints": [],
+            "root": {
+                "alias": null,
+                "config": {
+                    "en": ""
+                },
+                "datatype": "semantic",
+                "description": "",
+                "exportable": false,
+                "fieldname": null,
+                "graph_id": "41c228b2-b3ce-4174-9ed6-5632bded986c",
+                "hascustomalias": false,
+                "is_collector": false,
+                "isrequired": false,
+                "issearchable": true,
+                "istopnode": true,
+                "name": "Second Test Model",
+                "nodegroup_id": null,
+                "nodeid": "1d7eba02-6249-11f0-b14f-96a8a23bc0be",
+                "ontologyclass": null,
+                "sortorder": 0,
+                "sourcebranchpublication_id": null
+            },
+            "slug": null,
+            "subtitle": {
+                "en": ""
+            },
+            "template_id": "50000000-0000-0000-0000-000000000001",
+            "version": ""
+        }
+    ],
+    "metadata": {
+        "db": "PostgreSQL 14.5 (Debian 14.5-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit",
+        "git hash": "cd98519bd 2025-07-11 11:20:56 -0700",
+        "os": "Linux",
+        "os version": "6.6.87.2-microsoft-standard-WSL2"
+    }
+}
