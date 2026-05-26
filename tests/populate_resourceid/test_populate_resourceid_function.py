@@ -2,125 +2,19 @@ import os
 import random
 import uuid
 
-from django.test import TransactionTestCase
 from arches.app.models.graph import Graph
 from arches.app.models import models
-from arches.app.utils.betterJSONSerializer import JSONDeserializer
-from arches.app.utils.data_management.resource_graphs.importer import (
-    import_graph as resource_graph_importer,
-)
-from django.contrib.auth.models import User
-from arches.app.models.resource import Resource
-from arches.app.models.tile import Tile
-from django.core.management import call_command
+from .base_test import BasePopulateResourceIDTestCase
 
 # These tests can be run from the command line via:
-#     python manage.py test tests.populate_resourceid.populate_resourceid_tests --settings="tests.test_settings"
+#     python manage.py test tests.populate_resourceid.test_populate_resourceid_function --settings="tests.test_settings"
 # or if using Docker:
-#     python manage.py test tests.populate_resourceid.populate_resourceid_tests --settings="tests.test_settings_for_docker"
+#     python manage.py test tests.populate_resourceid.test_populate_resourceid_function --settings="tests.test_settings_for_docker"
 
 
-class TestPopulateResourceIDFunction(TransactionTestCase):
-
-    serialized_rollback = True
-
-    test_model_graph_id = "7a9d0a60-63f0-11f0-9f7e-460d1d596ee6"
-
-    # Node IDs from test_model.json fixture
-    resourceid_node_id = "7a9d162c-63f0-11f0-9f7e-460d1d596ee6"
-    system_reference_nodegroup_id = "7a9d0cfe-63f0-11f0-9f7e-460d1d596ee6"
-    description_node_id = "7a9d1924-63f0-11f0-9f7e-460d1d596ee6"
-    description_nodegroup_id = "7a9d1226-63f0-11f0-9f7e-460d1d596ee6"
-    language_code = "en"
-    default_direction = "ltr"
-
-    def setUp(self):
-        super().setUp()
-
-        # Need to register function before the graphs are imported
-        source = os.path.join(
-            "arches_he_sysref_funcs",
-            "functions",
-            "populate_resourceid.py",
-        )
-
-        call_command("fn", "register", source=source)
-
-        admin = User.objects.get(username="admin")
-
-        # Import test_model graph
-        with open(
-            os.path.join("tests/fixtures/resource_graphs/test_model_populateid.json"),
-            "r",
-        ) as f:
-            archesfile = JSONDeserializer().deserialize(f)
-        resource_graph_importer(archesfile["graph"])
-
-        # Ensure the imported test model is bound to the registered function.
-        registered_function = models.Function.objects.get(name="Generate ResourceID")
-        graph_function = models.FunctionXGraph.objects.filter(
-            graph_id=self.test_model_graph_id
-        ).first()
-        if (
-            graph_function
-            and graph_function.function_id != registered_function.functionid
-        ):
-            graph_function.function_id = registered_function.functionid
-            graph_function.save(update_fields=["function_id"])
-
-        graph = Graph.objects.get(graphid=self.test_model_graph_id)
-        graph.publish(user=admin)
-
-    def create_and_assert_resource(
-        self, graph_id, tile_data, nodegroup_id, resourceid_node=None
-    ):
-        """
-        Creates a resource with a tile and verifies the Resource ID is correctly populated.
-
-        Args:
-            graph_id: The graph to create the resource in
-            tile_data: The tile data to save
-            nodegroup_id: The nodegroup ID for the tile
-            resourceid_node: The node ID that should contain the Resource ID
-
-        Returns:
-            A tuple of (populated_resourceid_value, resource_instance_id)
-        """
-        if resourceid_node is None:
-            resourceid_node = self.resourceid_node_id
-
-        graph = Graph.objects.get(pk=graph_id)
-        resource = Resource(graph=graph)
-        tile = Tile(data=tile_data, nodegroup_id=nodegroup_id)
-        resource.tiles.append(tile)
-        resource.save()
-
-        # Fetch the saved tile to get the populated resourceid
-        saved_tiles = Tile.objects.filter(
-            nodegroup_id=nodegroup_id, resourceinstance_id=resource.resourceinstanceid
-        )
-
-        if saved_tiles.exists():
-            saved_tile = saved_tiles.first()
-            populated_resourceid = saved_tile.data.get(resourceid_node)
-            return populated_resourceid, str(resource.resourceinstanceid)
-
-        return None, str(resource.resourceinstanceid)
+class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
 
     # Test methods are named alphabetically, so the order of execution is predictable.
-
-    def _localized(self, value):
-        return {
-            self.language_code: {
-                "value": value,
-                "direction": self.default_direction,
-            }
-        }
-
-    def _extract_resourceid_value(self, node_value):
-        if isinstance(node_value, dict):
-            return node_value.get(self.language_code, {}).get("value")
-        return node_value
 
     # Has the function been registered?
     def test_01_function_exists(self):
