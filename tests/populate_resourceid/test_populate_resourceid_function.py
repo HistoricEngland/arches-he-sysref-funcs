@@ -43,12 +43,12 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         the function should populate it with the resource instance ID.
         """
         tile_data = {
-            "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+            "282839be-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+            "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+            "28284404-58f8-11f1-a45a-02e06202dcc7": None,
         }
         populated_resourceid, resource_id = self.create_and_assert_resource(
             self.test_model_graph_id,
@@ -73,12 +73,12 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         populate it with the resource instance ID.
         """
         tile_data = {
-            "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": self._localized(""),
-            "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+            "282839be-58f8-11f1-a45a-02e06202dcc7": self._localized(""),
+            "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+            "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+            "28284404-58f8-11f1-a45a-02e06202dcc7": None,
         }
         populated_resourceid, resource_id = self.create_and_assert_resource(
             self.test_model_graph_id,
@@ -97,14 +97,14 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         the function should replace it with the resource instance ID.
         """
         tile_data = {
-            "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": self._localized(
+            "282839be-58f8-11f1-a45a-02e06202dcc7": self._localized(
                 "This is NOT a valid UUID"
             ),
-            "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+            "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+            "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+            "28284404-58f8-11f1-a45a-02e06202dcc7": None,
         }
         populated_resourceid, resource_id = self.create_and_assert_resource(
             self.test_model_graph_id,
@@ -124,12 +124,12 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         """
         valid_uuid = str(uuid.uuid4())
         tile_data = {
-            "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": self._localized(valid_uuid),
-            "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+            "282839be-58f8-11f1-a45a-02e06202dcc7": self._localized(valid_uuid),
+            "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+            "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+            "28284404-58f8-11f1-a45a-02e06202dcc7": None,
         }
         populated_resourceid, resource_id = self.create_and_assert_resource(
             self.test_model_graph_id,
@@ -149,12 +149,12 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         the function should replace it with the resource instance ID.
         """
         tile_data = {
-            "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": self._localized("12345"),
-            "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-            "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+            "282839be-58f8-11f1-a45a-02e06202dcc7": self._localized("12345"),
+            "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+            "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+            "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+            "28284404-58f8-11f1-a45a-02e06202dcc7": None,
         }
         populated_resourceid, resource_id = self.create_and_assert_resource(
             self.test_model_graph_id,
@@ -193,12 +193,12 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
         resource_ids = []
         for i in range(5):
             tile_data = {
-                "7a9d162c-63f0-11f0-9f7e-460d1d596ee6": None,
-                "7a9d150a-63f0-11f0-9f7e-460d1d596ee6": None,
-                "7a9d1b90-63f0-11f0-9f7e-460d1d596ee6": None,
-                "7a9d1c9e-63f0-11f0-9f7e-460d1d596ee6": None,
-                "7a9d1e6a-63f0-11f0-9f7e-460d1d596ee6": None,
-                "7a9d211c-63f0-11f0-9f7e-460d1d596ee6": None,
+                "282839be-58f8-11f1-a45a-02e06202dcc7": None,
+                "28283784-58f8-11f1-a45a-02e06202dcc7": None,
+                "28283540-58f8-11f1-a45a-02e06202dcc7": None,
+                "282828e8-58f8-11f1-a45a-02e06202dcc7": None,
+                "28283f5e-58f8-11f1-a45a-02e06202dcc7": None,
+                "28284404-58f8-11f1-a45a-02e06202dcc7": None,
             }
             populated_resourceid, resource_id = self.create_and_assert_resource(
                 self.test_model_graph_id,

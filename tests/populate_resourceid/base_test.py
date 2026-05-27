@@ -22,13 +22,13 @@ class BasePopulateResourceIDTestCase(TransactionTestCase):
 
     serialized_rollback = True
 
-    test_model_graph_id = "7a9d0a60-63f0-11f0-9f7e-460d1d596ee6"
+    test_model_graph_id = "2828122c-58f8-11f1-a45a-02e06202dcc7"
 
     # Node IDs from test_model_populateid.json fixture
-    resourceid_node_id = "7a9d162c-63f0-11f0-9f7e-460d1d596ee6"
-    system_reference_nodegroup_id = "7a9d0cfe-63f0-11f0-9f7e-460d1d596ee6"
-    description_node_id = "7a9d1924-63f0-11f0-9f7e-460d1d596ee6"
-    description_nodegroup_id = "7a9d1226-63f0-11f0-9f7e-460d1d596ee6"
+    resourceid_node_id = "282839be-58f8-11f1-a45a-02e06202dcc7"
+    system_reference_nodegroup_id = "2828170e-58f8-11f1-a45a-02e06202dcc7"
+    description_node_id = "282830b8-58f8-11f1-a45a-02e06202dcc7"
+    description_nodegroup_id = "28282280-58f8-11f1-a45a-02e06202dcc7"
     language_code = "en"
     default_direction = "ltr"
 
@@ -46,22 +46,19 @@ class BasePopulateResourceIDTestCase(TransactionTestCase):
         admin = User.objects.get(username="admin")
 
         with open(
-            os.path.join("tests/fixtures/resource_graphs/test_model_populateid.json"),
+            os.path.join(
+                "tests/fixtures/pkg/graphs/resource_models/test_model_populateid.json"
+            ),
             "r",
         ) as f:
             archesfile = JSONDeserializer().deserialize(f)
         resource_graph_importer(archesfile["graph"])
 
         registered_function = models.Function.objects.get(name="Generate ResourceID")
-        graph_function = models.FunctionXGraph.objects.filter(
-            graph_id=self.test_model_graph_id
-        ).first()
-        if (
-            graph_function
-            and graph_function.function_id != registered_function.functionid
-        ):
-            graph_function.function_id = registered_function.functionid
-            graph_function.save(update_fields=["function_id"])
+        models.FunctionXGraph.objects.get_or_create(
+            graph_id=self.test_model_graph_id,
+            function_id=registered_function.functionid,
+        )
 
         graph = Graph.objects.get(graphid=self.test_model_graph_id)
         graph.publish(user=admin)
