@@ -4,7 +4,7 @@ A small Arches extension app providing additional system reference functions for
 
 ## Requirements
 
-- Python 3.10+ (Check the Arches python requirements and match your Python version))
+- Python 3.10+ (Check the Arches python requirements and match your Python version)
 - Arches ==7.6.22
 
 Some elements of this app are designed to work with Historic England's specific data model and may not be suitable for other projects without modification.
@@ -135,6 +135,14 @@ npm run build_development
 
 ```bash
 python manage.py runserver
+```
+
+## Loading package for testing through the UI
+
+To carry out testing through the UI, use the fixtures provided in the unit tests folder within the repo by running the [package load command](https://arches.readthedocs.io/en/stable/installing/projects-and-packages/#loading-a-package)
+
+```bash
+python manage.py packages -o load_package -s tests/fixtures/pkg
 ```
 
 ## License
