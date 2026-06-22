@@ -205,14 +205,10 @@ class TestPopulateResourceIDFunction(BasePopulateResourceIDTestCase):
                 tile_data,
                 self.system_reference_nodegroup_id,
             )
-            populated_resourceid_value = self._extract_resourceid_value(populated_resourceid)
-            resource_ids.append(populated_resourceid_value)
-
-            # Verify the current UUID is a valid UUID
-            try:
-                uuid.UUID(populated_resourceid_value)
-            except (ValueError, TypeError):
-                self.fail(f"Resource ID '{populated_resourceid_value}' is not a valid UUID")
+            extracted = self._extract_resourceid_value(populated_resourceid)
+            # Each resource's ID should match its own instance ID
+            self.assertEqual(extracted, resource_id)
+            resource_ids.append(extracted)
 
         # Verify all resource IDs are unique
         self.assertEqual(len(resource_ids), len(set(resource_ids)))
