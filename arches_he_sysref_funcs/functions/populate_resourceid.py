@@ -135,7 +135,7 @@ class GenerateResourceID(BaseFunction):
                         ):
                             p.save()
                         else:
-                            self.logger.dubug(
+                            self.logger.debug(
                                 "Error.  Could not save Unique Identifiers tile."
                             )
 
