@@ -1,4 +1,5 @@
 import os
+import uuid
 
 from django.test import TransactionTestCase
 from django.contrib.auth.models import User
@@ -82,9 +83,18 @@ class BasePopulateResourceIDTestCase(TransactionTestCase):
         if saved_tiles.exists():
             saved_tile = saved_tiles.first()
             populated_resourceid = saved_tile.data.get(resourceid_node)
-            return populated_resourceid, str(resource.resourceinstanceid)
-
-        return None, str(resource.resourceinstanceid)
+            return populated_resourceid, (
+                str(resource.resourceinstanceid)
+                if resource.resourceinstanceid is not None
+                else None
+                )
+        
+        else:
+            return None, (
+                str(resource.resourceinstanceid)
+                if resource.resourceinstanceid is not None
+                else None
+            )
 
     def _localized(self, value):
         return {
@@ -96,5 +106,16 @@ class BasePopulateResourceIDTestCase(TransactionTestCase):
 
     def _extract_resourceid_value(self, node_value):
         if isinstance(node_value, dict):
-            return node_value.get(self.language_code, {}).get("value")
+            node_value = node_value.get(self.language_code, {}).get("value")
+
+        if node_value is None:
+            return None
+
+        node_value = str(node_value)
+
+        try:
+            uuid.UUID(node_value)
+        except (ValueError, TypeError, AttributeError):
+            return None
+
         return node_value
