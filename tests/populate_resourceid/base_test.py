@@ -87,8 +87,8 @@ class BasePopulateResourceIDTestCase(TransactionTestCase):
                 str(resource.resourceinstanceid)
                 if resource.resourceinstanceid is not None
                 else None
-                )
-        
+            )
+
         else:
             return None, (
                 str(resource.resourceinstanceid)
