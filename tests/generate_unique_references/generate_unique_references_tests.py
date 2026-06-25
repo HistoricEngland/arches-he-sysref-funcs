@@ -15,7 +15,6 @@ from arches.app.models.tile import Tile
 from django.core.management import call_command
 from django.conf import settings
 
-
 # These tests can be run from the command line via:
 #     python manage.py test tests.generate_unique_references.generate_unique_references_tests --settings="tests.test_settings"
 # or if using Docker:
@@ -49,7 +48,10 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
 
         # Import test_model graph
         with open(
-            os.path.join("tests/fixtures/resource_graphs/test_model.json"), "r"
+            os.path.join(
+                "tests/fixtures/pkg/graphs/resource_models/first_test_model.json"
+            ),
+            "r",
         ) as f:
             archesfile = JSONDeserializer().deserialize(f)
         resource_graph_importer(archesfile["graph"])
@@ -58,7 +60,10 @@ class TestGenerateUniqueReferencesFunction(TransactionTestCase):
 
         # Import second_test_model graph
         with open(
-            os.path.join("tests/fixtures/resource_graphs/second_test_model.json"), "r"
+            os.path.join(
+                "tests/fixtures/pkg/graphs/resource_models/second_test_model.json"
+            ),
+            "r",
         ) as f:
             archesfile = JSONDeserializer().deserialize(f)
         resource_graph_importer(archesfile["graph"])
