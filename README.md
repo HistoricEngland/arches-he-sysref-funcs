@@ -5,7 +5,7 @@ A small Arches extension app providing additional system reference functions for
 ## Requirements
 
 - Python 3.10+ (Check the Arches python requirements and match your Python version))
-- Arches ==7.6.22
+- Arches 7.6
 
 Some elements of this app are designed to work with Historic England's specific data model and may not be suitable for other projects without modification.
 
@@ -72,9 +72,8 @@ Follow these steps to add `arches-he-sysref-funcs` to your Arches project:
 
   ```toml
   dependencies = [
-      "arches==7.6.22",
-      "arches-he-sysref-funcs @ git+https://github.com/HistoricEngland/arches-he-sysref-funcs.git@release/1.0.1",
-  ]
+      "arches==7.6.17",
+      "arches-he-sysref-funcs==1.0.1" ]
   ```
 
 ### 2. Update `your_project/your_project/settings.py`
