@@ -65,7 +65,7 @@ Follow these steps to add `arches-he-sysref-funcs` to your Arches project:
   Add the following to your `pyproject.toml` dependencies (in the `[project]` section):
 
   ```toml
-  arches-he-sysref-funcs==1.0.1
+  arches-he-sysref-funcs==1.0.2
   ```
 
   Example:
@@ -73,7 +73,7 @@ Follow these steps to add `arches-he-sysref-funcs` to your Arches project:
   ```toml
   dependencies = [
       "arches==7.6.17",
-      "arches-he-sysref-funcs==1.0.1" ]
+      "arches-he-sysref-funcs==1.0.2" ]
   ```
 
 ### 2. Update `your_project/your_project/settings.py`
